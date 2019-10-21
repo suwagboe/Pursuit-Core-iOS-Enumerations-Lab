@@ -5,7 +5,12 @@ import UIKit
 // a. Define an enumeration called iOSDeviceType with member values iPhone, iPad, iWatch. Create a variable called myiPad and assign it to .iPad.
 
 // Your code here
-
+enum iOSDeviceType{
+    case iPhone(String)
+    case iPad(String)
+    case iWatch
+}
+let myiPad = iOSDeviceType.iPad
 // Uncomment the lines below to test your solution
 
 //let myiPad = iOSDeviceType.iPad
@@ -14,13 +19,14 @@ import UIKit
 // b. Adjust your code above so that iPhone and iPad have associated values of type String which represents the model number.  Create an instance of a .iPhone("8+") and assign it to a variable called myPhone
 
 // Your code here
+let myPhone = iOSDeviceType.iPhone("8+")
 
 // Uncomment the lines below to test your solution
 
-//switch myPhone {
-//case let .iPhone(model): assert(model == "8+", "Was expecting a model type of 8+, but got \(model)")
-//default: fatalError("Was expecting an iPhone but got \(myPhone)")
-//}
+switch myPhone {
+case let .iPhone(model): assert(model == "8+", "Was expecting a model type of 8+, but got \(model)")
+default: fatalError("Was expecting an iPhone but got \(myPhone)")
+}
 
 // Question Two
 
@@ -40,9 +46,23 @@ enum Step {
 }
 
 // Your function here
+func getPosition(startingAt: (Int,Int), afterSteps: (Int, Int) ) -> (Int, Int){
+    var finalLocation = (startingAt.0, startingAt.1)
+    for amountOfSteps in afterSteps { // need help ??
+    switch amountOfSteps {
+    case Step.up:
+        finalLocation.1 += 1
+    case Step.down:
+        finalLocation.1 -= 1
+    case Step.left:
+        finalLocation.1 += 1
+    case Step.down:
+        finalLocation.1 -= 1
+        }}
+}
 
 // Uncomment the lines below to test your solution
-
+//
 //let startingLocation = (x: 0, y: 0)
 //let steps: [Step] = [.up, .up, .left, .down, .left]
 //let expectedEndPosition = (x: -2, y: 1)
@@ -63,20 +83,44 @@ enum Coin: Int {
 
 // Your function here
 
+// switch statements allows you to go through the an enum
+// how to access value in a tuple with 2 values. you do tuple.1 // starts at 0
+
+// coin is an enum
+// before logic we can get rid of variables.
+func getTotalValue(from tuples: [(numOfCoins: Int, typeOfCoin: Coin)]) -> Int {
+    //              we can give data type labels/ names
+    var totalNumOfCents = 0 // need a variable to hold the totla
+    for tuple in tuples { // use this to got through each tuples
+        switch tuple.typeOfCoin {
+        case .penny: // each time you
+            totalNumOfCents += Coin.penny.rawValue * tuple.numOfCoins
+        case .nickle :
+            totalNumOfCents += Coin.nickle.rawValue * tuple.numOfCoins
+        case .dime:
+            totalNumOfCents += Coin.dime.rawValue * tuple.numOfCoins
+        case .quarter:
+            totalNumOfCents += Coin.quarter.rawValue * tuple.numOfCoins
+}
+}
+    return totalNumOfCents
+}
+
+// += // adds and then reassigns
 // Uncomment the lines below to test your solution
 
-//let coinArr: [(Int, Coin)] = [
-//    (10, .penny),
-//    (15, .nickle),
-//    (3, .quarter),
-//    (20, .penny),
-//    (3, .dime),
-//    (7, .quarter)
-//]
-//
-//let expectedTotal = 385
-//let total = getTotalValue(from: coinArr)
-//assert(total == expectedTotal, "Was expecting \(expectedTotal), but got \(total)")
+let coinArr: [(Int, Coin)] = [
+    (10, .penny),
+    (15, .nickle),
+    (3, .quarter),
+    (20, .penny),
+    (3, .dime),
+    (7, .quarter)
+]
+
+let expectedTotal = 385
+let total = getTotalValue(from: coinArr)
+assert(total == expectedTotal, "Was expecting \(expectedTotal), but got \(total)")
 
 // Question Four
 
