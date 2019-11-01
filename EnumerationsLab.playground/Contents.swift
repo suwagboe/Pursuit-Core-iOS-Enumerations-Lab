@@ -46,23 +46,26 @@ enum Step {
 }
 
 // Your function here
-func getPosition(startingAt: (Int,Int), afterSteps: (Int, Int) ) -> (Int, Int){
-    var finalLocation = (startingAt.0, startingAt.1)
-    for amountOfSteps in afterSteps { // need help ??
-    switch amountOfSteps {
-    case Step.up:
-        finalLocation.1 += 1
-    case Step.down:
-        finalLocation.1 -= 1
-    case Step.left:
-        finalLocation.1 += 1
-    case Step.down:
-        finalLocation.1 -= 1
-        }}
-}
+
+// not sure why this one is wrong...
+
+//func getPosition(startingAt: (Int,Int), afterSteps: (Int, Int) ) -> (Int, Int){
+//    var finalLocation = (startingAt.0, startingAt.1)
+//    for finalLocation in afterSteps { // need help ??
+//    switch amountOfSteps {
+//    case Step.up:
+//        finalLocation.1 += 1
+//    case Step.down:
+//        finalLocation.1 -= 1
+//    case Step.left:
+//        finalLocation.1 += 1
+//    case Step.down:
+//        finalLocation.1 -= 1
+//        }}
+//}
 
 // Uncomment the lines below to test your solution
-//
+
 //let startingLocation = (x: 0, y: 0)
 //let steps: [Step] = [.up, .up, .left, .down, .left]
 //let expectedEndPosition = (x: -2, y: 1)
@@ -148,6 +151,38 @@ assert(total == expectedTotal, "Was expecting \(expectedTotal), but got \(total)
 //Rock beats scissors, paper beats rock, scissor beats paper
 
 // Your code here
+
+enum HandShape {
+    case rock
+    case paper
+    case scissors
+}
+
+enum MatchResult {
+    case win
+    case draw
+    case lose
+}
+
+//func matchResult(fromPlayerOneShape: HandShape, PlayerTwoShape: HandShape) -> MatchResult{
+//    var playersOneInput: HandShape
+//    var playersTwoInput: HandShape
+//    let decision: MatchResult
+    
+    //Rock beats scissors, paper beats rock, scissor beats paper
+
+    
+    //switch whichOneWins{
+//    if playersOneInput == HandShape.rock && PlayerTwoShape != (HandShape.rock || HandShape.paper) {
+//        print("PLAYER ONE \(MatchResult.win)")
+//    } else {
+//        print("IT IS A \(MatchResult.draw)")
+//    } else if playersOneInput == HandShape.paper
+//    
+//    
+//   return decision
+//}
+
 
 // Uncomment the lines below to test your solution
 
